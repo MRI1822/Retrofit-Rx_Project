@@ -1,6 +1,7 @@
 package com.mrigankprojects.myretrofit_rx.rx
 
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.mrigankprojects.myretrofit_rx.activity.MainActivity
 import com.mrigankprojects.myretrofit_rx.api.response.NewsListResponse
 import io.reactivex.Observable
@@ -20,11 +21,19 @@ class RxAPICallHelper {
             throw IllegalArgumentException("Callback must not be null.")
         }
 
+        Log.v("RxAPICallHelper", "Inside here")
+
         return observable.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ response -> (myActivity as MainActivity).setNewsData(response) }, { /*throwable ->
                     myActivity.onFailed(throwable)*/
             })
+
+        /*return observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response -> Log.v("RXAPI observable", "Inside here") }, { *//*throwable ->
+                    myActivity.onFailed(throwable)*//*
+            })*/
 
 
     }

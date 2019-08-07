@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
+import android.widget.Toast
 import com.mrigankprojects.myretrofit_rx.R
 import com.mrigankprojects.myretrofit_rx.adapter.NewsRecyclerAdapter
 import com.mrigankprojects.myretrofit_rx.api.ApiProduction
@@ -42,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun setNewsData(newsItems: NewsListResponse) {
+
+        Log.v("Main Activity", "inside here")
         recyclerNews.layoutManager = LinearLayoutManager(this)
 
         val newsRecyclerAdapter: NewsRecyclerAdapter = NewsRecyclerAdapter()
@@ -56,7 +60,14 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         })
+        Log.v("Main Activity", "Outside here")
     }
+
+    public fun demofunc(newsItems: NewsListResponse){
+        Log.v("Main Activity", "Inside demofunc")
+    }
+
+
 
 }
 
